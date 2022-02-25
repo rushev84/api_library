@@ -1,19 +1,13 @@
 <?php
 
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Headers: *');
-header('Access-Control-Allow-Methods: *');
-header('Access-Control-Allow-Credentials: true');
-header('Content-type: json/application');
-
 require 'connect.php';
-require 'functions.php';
+require 'api.php';
 
 $uri = $_GET['q'];
 $method = $_SERVER['REQUEST_METHOD'];
 
-if ($uri === 'books' && $method === 'GET') {
-    getBooks($connect);
+if ($uri === null && $method === 'GET'){
+    echo 'Welcome to API "Library"!';
 } else {
-    sendResponse404();
+    runApi($connect, $uri, $method);
 }

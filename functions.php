@@ -2,15 +2,11 @@
 
 function getBooks($connect)
 {
-
     $books = mysqli_query($connect, "SELECT * FROM `books`");
-
     $booksList = [];
-
     while ($book = mysqli_fetch_assoc($books)) {
         $booksList[] = $book;
     }
-
     echo json_encode($booksList);
 }
 
