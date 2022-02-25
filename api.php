@@ -1,6 +1,6 @@
 <?php
 
-require 'functions.php';
+require 'vendor/functions.php';
 
 function runApi($connect, $uri, $method)
 {
