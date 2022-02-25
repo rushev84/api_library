@@ -19,5 +19,5 @@ if (mysqli_num_rows($check_user) > 0) {
     header('Location: ../profile.php');
 } else {
     $_SESSION['message'] = 'Incorrect login or password';
-    header('Location: ../index.php');
+    header('Location: auth_form.php');
 };
