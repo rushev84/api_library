@@ -1,8 +1,14 @@
 <?php
-session_start();
-if ($_SESSION['user']) {
-    require 'vendor/connect.php';
-    require 'api.php';
+
+require 'connect.php';
+require 'functions.php';
+
+if (($_SERVER['PHP_AUTH_USER'] == 'user' && ($_SERVER['PHP_AUTH_PW'] == '123'))) {
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Headers: *');
+    header('Access-Control-Allow-Methods: *');
+    header('Access-Control-Allow-Credentials: true');
+    header('Content-type: json/application');
 
     $uri = $_GET['q'];
     $method = $_SERVER['REQUEST_METHOD'];
@@ -13,6 +19,5 @@ if ($_SESSION['user']) {
         runApi($connect, $uri, $method);
     }
 } else {
-    header('Location: vendor/auth_form.php');
+    sendAuthError();
 }
-?>
